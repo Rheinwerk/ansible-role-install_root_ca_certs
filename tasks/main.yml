@@ -1,0 +1,14 @@
+---
+#
+# tasks file for ansible-role-install_root_ca_certs
+#
+# vim:et:ts=2:ft=ansible
+- name: Install Root CA certificate files
+  copy: content="{{ item.value }}" dest="/usr/local/share/ca-certificates/{{ item.key }}.crt"
+  with_dict: "{{ _install_root_ca_certs.certificates }}"
+  register: new_certs_installed
+
+- name: Update Root CA certificate database
+  command: update-ca-certificates
+  when: new_certs_installed|changed
+

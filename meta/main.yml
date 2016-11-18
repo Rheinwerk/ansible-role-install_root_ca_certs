@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Daniel Schneller
+  description: Installs Root CA certificates in Ubuntu
+  company: Rheinwerk
+  license: license (GPLv3)
+  min_ansible_version: 2.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  galaxy_tags:
+    - ca-certificates
+    - root-ca-certificates
+    - certificates
+dependencies: []
+
