@@ -7,6 +7,8 @@
   copy: content="{{ item.value }}" dest="/usr/local/share/ca-certificates/{{ item.key }}.crt"
   with_dict: "{{ _install_root_ca_certs.certificates }}"
   register: new_certs_installed
+  loop_control:
+    label: "{{ item.key }}"
 
 - name: Update Root CA certificate database
   command: update-ca-certificates
