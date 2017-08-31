@@ -14,3 +14,10 @@
   command: update-ca-certificates
   when: new_certs_installed|changed
 
+- name: Add certificate locations to glob file
+  lineinfile: dest="{{ _install_root_ca_certs.glob_file }}" owner=root group=root mode=0644 create=yes line="/usr/local/share/ca-certificates/{{ item.key }}.crt"
+  with_dict: "{{ _install_root_ca_certs.certificates }}"
+  when: _install_root_ca_certs.glob_file is defined
+  loop_control:
+    label: "{{ item.key }}"
+

@@ -2,6 +2,7 @@
 # defaults file for ansible-role-install_root_ca_certs
 
 _install_root_ca_certs:
+  glob_file: /etc/cert_exp_time_globs
   certificates:
     demo_ca: |
       -----BEGIN CERTIFICATE-----
