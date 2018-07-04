@@ -20,4 +20,3 @@
   when: _install_root_ca_certs.glob_file is defined
   loop_control:
     label: "{{ item.key }}"
-
