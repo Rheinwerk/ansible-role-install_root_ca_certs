@@ -7,6 +7,9 @@
   copy:
     content: "{{ item.value }}"
     dest: "/usr/local/share/ca-certificates/{{ item.key }}.crt"
+    owner: root
+    group: root
+    mode: 0644
   with_dict: "{{ _install_root_ca_certs.certificates }}"
   register: new_certs_installed
   loop_control:
