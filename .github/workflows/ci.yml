@@ -19,11 +19,6 @@ jobs:
         ansible-version: [ '>=2.9, <2.10', '>=2.10, <2.11' ]
         os: [ 'ubuntu-18.04', 'ubuntu-20.04' ]
         python-version: [ '3.7', '3.8' ]
-        # Try latest versions, but allow them to fail
-        include:
-          - ansible-version: [ '~' ]
-            os: ubuntu-latest
-            experimental: true
 
     steps:
       - name: Check out the codebase
