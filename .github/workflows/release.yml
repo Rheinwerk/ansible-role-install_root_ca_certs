@@ -11,6 +11,9 @@ jobs:
     name: Release
     runs-on: ubuntu-20.04
     steps:
+      - name: Install Ansible
+        run: pip install ansible
+
       # Ansible ist bereits im Ubuntu Image enthalten, wir brauchen keine spezielle Version für den Import trigger: https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md
       - name: Publish to Galaxy
         run: |
