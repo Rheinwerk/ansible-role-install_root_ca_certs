@@ -19,6 +19,11 @@ jobs:
         ansible-version: [ '>=2.9, <2.10', '>=2.10, <2.11' ]
         os: [ 'ubuntu-18.04', 'ubuntu-20.04' ]
         python-version: [ '3.7', '3.8' ]
+        # Try latest versions, but allow them to fail
+        include:
+          - ansible-version: [ '' ]
+            os: ubuntu-latest
+            experimental: true
 
     steps:
       - name: Check out the codebase
@@ -30,7 +35,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Install Ansible ${{ matrix.ansible-version }}
-        run: pip install 'ansible${{ matrix.ansible-version }}'
+        run: pip3 install 'ansible${{ matrix.ansible-version }}'
 
       # Yamllint ist bereits im Ubuntu Image enthalten: https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md
       - name: Check versions
