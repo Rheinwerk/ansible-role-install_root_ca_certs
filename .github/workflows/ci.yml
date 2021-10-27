@@ -21,7 +21,7 @@ jobs:
         python-version: [ '3.7', '3.8' ]
         # Try latest versions, but allow them to fail
         include:
-          - ansible-version: []
+          - ansible-version: [ '~' ]
             os: ubuntu-latest
             experimental: true
 
