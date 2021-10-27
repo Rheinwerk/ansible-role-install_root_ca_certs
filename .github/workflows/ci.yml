@@ -11,7 +11,7 @@ on:
 jobs:
 
   lint:
-    name: CI ${{ matrix.os }}
+    name: CI ${{ matrix.os }} / Ansible ${{ matrix.ansible-version }} / Python ${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
