@@ -11,23 +11,20 @@ on:
 jobs:
 
   lint:
-    name: CI for Ansible ${{ matrix.ansible-version }} / ${{ matrix.os }} / Python ${{ matrix.python-version }}
+    name: CI for Ansible ${{ matrix.ansible-version }} / ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         # Use latest patch versions
         ansible-version: [ '>=2.9, <2.10', '>=2.10, <2.11' ]
         os: [ 'ubuntu-18.04', 'ubuntu-20.04' ]
-        python-version: [ '3.7', '3.8' ]
 
     steps:
       - name: Check out the codebase
         uses: actions/checkout@v2
 
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
-        with:
-          python-version: ${{ matrix.python-version }}
+      - name: Install python3-pip
+        run: apt install python3-pip
 
       - name: Install Ansible ${{ matrix.ansible-version }}
         run: pip3 install 'ansible${{ matrix.ansible-version }}'
