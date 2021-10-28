@@ -4,7 +4,7 @@ Install Custom Root CA Certificates
 This role can be used to install trusted Root CA certificates in Ubuntu
 hosts.
 
-[![Build Status](https://travis-ci.org/Rheinwerk/ansible-role-install_root_ca_certs.svg?branch=master)](https://travis-ci.org/Rheinwerk/ansible-role-install_root_ca_certs)
+[![Build Status](https://github.com/Rheinwerk/ansible-role-install_root_ca_certs/actions/workflows/ci.yml/badge.svg)](https://github.com/Rheinwerk/ansible-role-install_root_ca_certs/actions/workflows/ci.yml)
 
 Requirements
 ------------
