@@ -14,10 +14,7 @@
   register: new_certs_installed
   loop_control:
     label: "{{ item.key }}"
-
-- name: Update Root CA certificate database
-  command: update-ca-certificates
-  when: new_certs_installed is changed
+  notify: Update Root CA certificate database
 
 - name: Add certificate locations to glob file
   lineinfile:

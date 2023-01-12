@@ -1,0 +1,3 @@
+---
+- name: Update Root CA certificate database
+  command: update-ca-certificates
