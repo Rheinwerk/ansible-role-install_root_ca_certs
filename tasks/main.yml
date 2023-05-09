@@ -4,7 +4,7 @@
 #
 # vim:et:ts=2:ft=ansible
 - name: Install Root CA certificate files
-  copy:
+  ansible.builtin.copy:
     content: "{{ item.value }}"
     dest: "/usr/local/share/ca-certificates/{{ item.key }}.crt"
     owner: root
@@ -17,7 +17,7 @@
   notify: Update Root CA certificate database
 
 - name: Add certificate locations to glob file
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ _install_root_ca_certs.glob_file }}"
     owner: root
     group: root
