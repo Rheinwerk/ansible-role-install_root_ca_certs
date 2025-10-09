@@ -1,6 +1,5 @@
 galaxy_info:
-  author: Daniel Schneller
-  namespace: rheinwerk
+  author: rheinwerk
   role_name: install_root_ca_certs
   description: Installs Root CA certificates in Ubuntu
   company: Rheinwerk
