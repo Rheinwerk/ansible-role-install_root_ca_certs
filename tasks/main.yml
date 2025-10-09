@@ -9,7 +9,7 @@
     dest: "/usr/local/share/ca-certificates/{{ item.key }}.crt"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   with_dict: "{{ _install_root_ca_certs.certificates }}"
   register: new_certs_installed
   loop_control:
@@ -21,7 +21,7 @@
     dest: "{{ _install_root_ca_certs.glob_file }}"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
     create: yes
     line: "/usr/local/share/ca-certificates/{{ item.key }}.crt"
   with_dict: "{{ _install_root_ca_certs.certificates }}"

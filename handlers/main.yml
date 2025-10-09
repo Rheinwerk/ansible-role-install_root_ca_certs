@@ -1,3 +1,5 @@
 ---
 - name: Update Root CA certificate database
   ansible.builtin.command: update-ca-certificates
+  register: update_ca_result
+  changed_when: update_ca_result.stdout is not search('0 added, 0 removed')
