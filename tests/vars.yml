@@ -1,0 +1,23 @@
+---
+# A throwaway self-signed CA (generated for the molecule test, key discarded) and the default glob file
+_install_root_ca_certs_certificates:
+  molecule_test_ca: |
+    -----BEGIN CERTIFICATE-----
+    MIIDKjCCAhKgAwIBAgIUXcwQjZ8mDGweMzyzVznSUR114towDQYJKoZIhvcNAQEL
+    BQAwNTEzMDEGA1UEAwwqTW9sZWN1bGUgVGVzdCBDQSAtLSBub3QgZm9yIHByb2R1
+    Y3Rpb24gdXNlMB4XDTI2MTEyMzExMDIxNFoXDTM2MTEyMDExMDIxNFowNTEzMDEG
+    A1UEAwwqTW9sZWN1bGUgVGVzdCBDQSAtLSBub3QgZm9yIHByb2R1Y3Rpb24gdXNl
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAj9yNSkcfKL2lzfhlJH7t
+    O+SINL2WV1ep57qJPvAc0qgZt9xRRDD76HkCul4yngw0kB/dK45AGcQehO43XMMY
+    cjV3YAIZKv5MA6D/IL5eQ6PNd305tZxhuZHH2vGXfp+GMZd8mTXLneup9AUmj7RK
+    krEYwSzsU4c1weu5/3dCnuIoGJWPlk8nA14F+TGkshIPBUozKiLyqOUD+MFdUvCA
+    Q2bDakDICidZ/2G8IY+YC4RlgcOzjRiX9kgaM/uv9GiTl1KBJ9DN7aYFpObRSiq2
+    y4NOJYPd+nQr/4P3fWFoByWaZcaJYgslyZSTYgqX8k1RLwzhdn8LTyClafRfLZtK
+    bwIDAQABozIwMDAdBgNVHQ4EFgQUu9pokDHeMBS4DpDVlLMIRvpi7dYwDwYDVR0T
+    AQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEALIVtZXT3zwtx5Lj/1UwNU5hD
+    QX6SJJhUcySaF8/94Qc08cCbEuze023ug3pevmOEsiCYTzdrB9+63fmGQO9HDy2A
+    4tSzYCDIW9zKcyJ7tj+uVSpsApt6bjyKktxz24xckBJZKrK5gSerkJ49WunIL2/H
+    eLANsA1SfNJY/hnAU9mdGeOKOvx9SdeapBvX6HDaPt9bb8V1RiEPSAGXDZgzMSaI
+    x4KFopHmeR4YaqTtGX4cc1+reB79ch31ZhaRSArQq+/Rf9cgJCSph2JrFVeAso3Y
+    G3YPIoZxkia8QhmhwSw5667s4b48JYndMkqYPJWfvdnusBhEY7rHFj+X0ngSow==
+    -----END CERTIFICATE-----

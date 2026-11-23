@@ -1,0 +1,13 @@
+---
+argument_specs:
+  main:
+    short_description: Install CA certificates into the system trust store
+    options:
+      _install_root_ca_certs_glob_file:
+        type: str
+        description:
+          - Absolute path of a file that gets one line per installed certificate path; an empty string skips it.
+      _install_root_ca_certs_certificates:
+        type: dict
+        description:
+          - "CA certificates as C({<name>: <PEM certificate>}); each is written to /usr/local/share/ca-certificates/<name>.crt and update-ca-certificates runs when one changed."

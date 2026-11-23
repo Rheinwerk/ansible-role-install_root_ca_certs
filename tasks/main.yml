@@ -1,8 +1,9 @@
 ---
-#
-# tasks file for ansible-role-install_root_ca_certs
-#
-# vim:et:ts=2:ft=ansible
+- name: Assert
+  ansible.builtin.import_tasks: assert.yml
+  tags:
+    - always
+
 - name: Install Root CA certificate files
   ansible.builtin.copy:
     content: "{{ item.value }}"
@@ -10,7 +11,7 @@
     owner: root
     group: root
     mode: "0644"
-  with_dict: "{{ _install_root_ca_certs.certificates }}"
+  loop: "{{ _install_root_ca_certs_certificates | dict2items }}"
   register: new_certs_installed
   loop_control:
     label: "{{ item.key }}"
@@ -18,13 +19,13 @@
 
 - name: Add certificate locations to glob file
   ansible.builtin.lineinfile:
-    dest: "{{ _install_root_ca_certs.glob_file }}"
+    dest: "{{ _install_root_ca_certs_glob_file }}"
     owner: root
     group: root
     mode: "0644"
-    create: yes
+    create: true
     line: "/usr/local/share/ca-certificates/{{ item.key }}.crt"
-  with_dict: "{{ _install_root_ca_certs.certificates }}"
-  when: _install_root_ca_certs.glob_file is defined
+  loop: "{{ _install_root_ca_certs_certificates | dict2items }}"
+  when: _install_root_ca_certs_glob_file | length > 0
   loop_control:
     label: "{{ item.key }}"

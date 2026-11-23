@@ -1,0 +1,33 @@
+---
+# tests/vars.yml installs molecule_test_ca with the default glob file
+- name: Verify
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    verify_cert_path: /usr/local/share/ca-certificates/molecule_test_ca.crt
+  tasks:
+    - name: Read the installed certificate, the trust bundle and the glob file
+      ansible.builtin.slurp:
+        src: "{{ item }}"
+      loop:
+        - "{{ verify_cert_path }}"
+        - /etc/ssl/certs/ca-certificates.crt
+        - /etc/cert_exp_time_globs
+      register: verify_files
+
+    - name: The certificate is in the trust bundle and listed in the glob file
+      ansible.builtin.assert:
+        that:
+          - files[0] is search('-----BEGIN CERTIFICATE-----')
+          - (files[0] | trim) in files[1]
+          - verify_cert_path in files[2].splitlines()
+        fail_msg: "{{ files[2] }}"
+      vars:
+        files: "{{ verify_files.results | map(attribute='content') | map('b64decode') | list }}"
+
+    - name: Openssl trusts the certificate through the system store
+      ansible.builtin.command: "openssl verify -CApath /etc/ssl/certs {{ verify_cert_path }}"
+      register: verify_openssl
+      changed_when: false
+      failed_when: "verify_openssl.rc != 0 or verify_openssl.stdout is not search(': OK$')"
