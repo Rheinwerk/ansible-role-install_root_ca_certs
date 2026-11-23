@@ -1,4 +1,14 @@
 ---
+# The dict of v0.x is gone; a play that still sets it would get the defaults without noticing
+- name: Assert the old _install_root_ca_certs dict is not set
+  ansible.builtin.assert:
+    that:
+      - _install_root_ca_certs is not defined
+    fail_msg: "_install_root_ca_certs (a dict) was replaced by the flat _install_root_ca_certs_* variables in v1.0.0, see the README"
+    quiet: true
+  tags:
+    - always
+
 - name: Assert the glob file is empty or an absolute path
   ansible.builtin.assert:
     that:

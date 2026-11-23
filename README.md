@@ -16,7 +16,8 @@ Role Variables
 
 Every variable has a default (`defaults/main.yml`); set only the ones that differ.
 `meta/argument_specs.yml` and `tasks/assert.yml` check the values before anything
-is written.
+is written; a wrong type, an unknown key or the `_install_root_ca_certs` dict of v0.x
+fails the run at the start.
 
 | Variable | Default | Description |
 | --- | --- | --- |
