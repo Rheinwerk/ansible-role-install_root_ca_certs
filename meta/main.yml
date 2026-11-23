@@ -1,15 +1,16 @@
+---
 galaxy_info:
   author: rheinwerk
   role_name: install_root_ca_certs
-  description: Installs Root CA certificates in Ubuntu
+  description: Installs Root CA certificates in the system trust store
   company: Rheinwerk
   license: license (GPLv3)
-  min_ansible_version: 2.9.0
+  min_ansible_version: "2.18"
   platforms:
-    - name: Ubuntu
+    - name: Debian
       versions:
-        - focal
-        - jammy
+        - bookworm
+        - trixie
   galaxy_tags:
     - ca
     - certificates

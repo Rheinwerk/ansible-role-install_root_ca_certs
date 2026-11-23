@@ -1,22 +1,23 @@
 ---
-# Based on ansible-lint config
 extends: default
 
 rules:
-  octal-values: {forbid-implicit-octal: true, forbid-explicit-octal: true}
-  braces: {max-spaces-inside: 1, level: error}
-  brackets: {max-spaces-inside: 1, level: error}
-  colons: {max-spaces-after: -1, level: error}
-  commas: {max-spaces-after: -1, level: error}
-  comments: {min-spaces-from-content: 1}
-  comments-indentation: disable
-  document-start: disable
-  empty-lines: {max: 3, level: error}
-  hyphens: {level: error}
-  indentation: disable
-  key-duplicates: enable
-  line-length: disable
-  new-line-at-end-of-file: disable
-  new-lines: {type: unix}
-  trailing-spaces: disable
-  truthy: disable
+  line-length:
+    max: 200
+    level: warning
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: false
+  braces:
+    max-spaces-inside: 1
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
+  truthy:
+    check-keys: false
+
+# scenario files synced from Rheinwerk/molecule by CI and `make scenario`
+ignore: |
+  molecule/default/molecule.yml
+  molecule/default/converge.yml
+  molecule/default/group_vars/

@@ -1,0 +1,24 @@
+---
+- name: Assert the glob file is empty or an absolute path
+  ansible.builtin.assert:
+    that:
+      - _install_root_ca_certs_glob_file is string
+      - _install_root_ca_certs_glob_file == '' or _install_root_ca_certs_glob_file is match('^/\\S+\\Z')
+    fail_msg: "_install_root_ca_certs_glob_file must be an empty string or an absolute path without whitespace"
+    quiet: true
+  tags:
+    - always
+
+- name: Assert every certificate has a file name and one PEM certificate
+  ansible.builtin.assert:
+    that:
+      - _install_root_ca_certs_certificates is mapping
+      - _install_root_ca_certs_certificates.keys() | reject('match', '^[A-Za-z0-9_][A-Za-z0-9_.-]*\\Z') | list | length == 0
+      - _install_root_ca_certs_certificates.values() | reject('string') | list | length == 0
+      - _install_root_ca_certs_certificates.values() | reject('match', '^\\s*-----BEGIN CERTIFICATE-----\\n[A-Za-z0-9+/=\\n]+-----END CERTIFICATE-----\\s*\\Z') | list | length == 0
+    fail_msg: >-
+      _install_root_ca_certs_certificates must map file names (letters, digits, _ . -, no slash) to exactly one PEM certificate each:
+      {{ _install_root_ca_certs_certificates.keys() | list if _install_root_ca_certs_certificates is mapping else _install_root_ca_certs_certificates }}
+    quiet: true
+  tags:
+    - always

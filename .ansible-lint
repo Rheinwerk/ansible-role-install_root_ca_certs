@@ -1,6 +1,9 @@
+---
 offline: true
 
 skip_list:
   - name[template]
   - role-name
-  - yaml
+
+exclude_paths:
+  - molecule/default/
